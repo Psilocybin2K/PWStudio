@@ -1,0 +1,150 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PageObjectModel",
+  "type": "object",
+  "required": [
+    "type",
+    "url",
+    "name",
+    "description",
+    "elements",
+    "tasks",
+    "utterances"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "page"
+      ],
+      "description": "The type of the object. Must be 'page'."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL of the page."
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the page."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the page."
+    },
+    "elements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "cssPath"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the element."
+          },
+          "cssPath": {
+            "type": "string",
+            "description": "The CSS selector for the element."
+          },
+          "utterances": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Utterances or phrases that refer to this element."
+          }
+        }
+      }
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "steps"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the task."
+          },
+          "description": {
+            "type": "string",
+            "description": "A description of the task."
+          },
+          "parameters": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "name",
+                "type"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "The name of the parameter."
+                },
+                "type": {
+                  "type": "string",
+                  "description": "The type of the parameter."
+                }
+              }
+            }
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "description",
+                "action",
+                "element",
+                "value"
+              ],
+              "properties": {
+                "description": {
+                  "type": "string",
+                  "description": "A description of the step."
+                },
+                "action": {
+                  "type": "string",
+                  "description": "The action to perform (e.g., EnterText, Click)."
+                },
+                "element": {
+                  "type": "string",
+                  "description": "The name of the element to interact with."
+                },
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "The value to use in the step (if applicable)."
+                }
+              }
+            }
+          },
+          "utterances": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Utterances or phrases that refer to this task."
+          }
+        }
+      }
+    },
+    "utterances": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Utterances or phrases that refer to this page."
+    }
+  }
+}

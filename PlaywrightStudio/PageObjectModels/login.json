@@ -1,0 +1,75 @@
+{
+    "type": "page",
+    "url": "https://saucedemo.com",
+    "name": "Login Page",
+    "description": "Login page for the saucedemo website. Allows the user to login to the website.",
+    "elements": [
+        {
+            "name": "UsernameInput",
+            "cssPath": "input[name='user-name']",
+            "utterances": [
+                "enter username",
+                "fill username"
+            ]
+        },
+        {
+            "name": "PasswordInput",
+            "cssPath": "input[name='password']",
+            "utterances": [
+                "enter password",
+                "fill password"
+            ]
+        },
+        {
+            "name": "LoginButton",
+            "cssPath": "input[type='submit'][name='login-button']",
+            "utterances": [
+                "click login"
+            ]
+        }
+    ],
+    "tasks": [
+        {
+            "name": "Login",
+            "description": "Login to the saucedemo website.",
+            "parameters": [
+                {
+                    "name": "username",
+                    "type": "string"
+                },
+                {
+                    "name": "password",
+                    "type": "string"
+                }
+            ],
+            "steps": [
+                {
+                    "description": "Enter username",
+                    "action": "EnterText",
+                    "element": "UsernameInput",
+                    "value": "{@username}"
+                },
+                {
+                    "description": "Enter password",
+                    "action": "EnterText",
+                    "element": "PasswordInput",
+                    "value": "{@password}"
+                },
+                {
+                    "description": "Click login button",
+                    "action": "Click",
+                    "element": "LoginButton",
+                    "value": null
+                }
+            ],
+            "utterances": [
+                "login functionality",
+                "login as {username} with password {password}"
+            ]
+        }
+    ],
+    "utterances": [
+        "login page",
+        "login as {username} with password {password}"
+    ]
+}
